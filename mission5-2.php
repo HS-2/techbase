@@ -8,15 +8,15 @@ function h($text) {
  $user="username";
  $password="password";
  $pdo=new PDO($dsn,$user,$password,array(PDO::ATTR_ERRMODE =>PDO::ERRMODE_WARNING));
-    //テーブル作成  done
-    //$sql= "CREATE TABLE  IF NOT EXISTS mission5_1(
-     //id INT AUTO_INCREMENT PRIMARY KEY,  
-     //name char(32),
-     //comment TEXT,
-     //date datetime,
-     //password char(30)
-     //)";
-     //$res=$pdo ->query($sql);
+    //テーブル作成  
+    $sql= "CREATE TABLE  IF NOT EXISTS mission5_1(
+     id INT AUTO_INCREMENT PRIMARY KEY,  
+     name char(32),
+     comment TEXT,
+     date datetime,
+     password char(30)
+     )";
+     $res=$pdo ->query($sql);
   $deta0=null;
   $deta1=null;
   $deta2=null;
@@ -41,10 +41,10 @@ function h($text) {
      $delpass=h($_POST["delpass"]);
          $del=$_POST["delete"];
          
-    //パスワード認証 
+    //パスワード認証
+	 $id=$del;
      // SELECT文を変数に格納
-    $id=$del;
-    $sql = "SELECT * FROM mission5_1 where id = :id";
+       $sql = "SELECT * FROM mission5_1 where id = :id";
     // SQLステートメントを実行し、結果を変数に格納
     $stmt = $pdo->prepare($sql);
     // プレースホルダと変数をバインド
@@ -70,8 +70,8 @@ function h($text) {
         $edipass=h($_POST["edipass"]);
         
     //パスワード認証 
+	 $id=$edi;
      // SELECT文を変数に格納
-    $id=$edi;
     $sql = "SELECT * FROM mission5_1 where id = :id";
     // SQLステートメントを実行し、結果を変数に格納
     $stmt = $pdo->prepare($sql);
@@ -107,8 +107,8 @@ function h($text) {
     $repass=h($_POST["pass"]);
      
     //パスワード認証 
-     // SELECT文を変数に格納
-    $id=$edinum;
+      $id=$edinum;
+	// SELECT文を変数に格納
     $sql = "SELECT * FROM mission5_1 where id = :id";
     // SQLステートメントを実行し、結果を変数に格納
     $stmt = $pdo->prepare($sql);
